@@ -15,13 +15,48 @@ body {
 	max-height: 860px;
 }
 
+.top-header {
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 5px solid;
+	border-bottom: 5px solid;
+}
+
+.titile {
+	display: flex;
+	justify-content: center; /* 수평 가운데 정렬 */
+	align-items: center; /* 수직 가운데 정렬 */
+	flex: 1; /* 남은 공간 모두 차지 */
+}
+
+.headerbutton {
+	display: flex;
+	height: 50px;
+	align-self: center;
+}
+
+.logout {
+	font-size: 1.5rem;
+	text-align: center;
+	border-left: 1px solid;
+}
+
+.mypage {
+	font-size: 1.5rem;
+	text-align: center;
+	line-height: 80px;
+}
+
 h1 {
 	text-align: center;
 	text-decoration-line: none;
 	color: black;
 	font-size: 50px;
-	border-bottom: 5px solid;
-	padding-bottom: 30px;
+}
+
+.downheader {
+	display: flex;
+	justify-content: space-between;
 }
 
 a {
@@ -49,44 +84,72 @@ table>tr>th {
 }
 </style>
 </head>
+
 <body class="scroll">
-	<div>
-		<a href="${pageContext.request.contextPath}/logout.do">로그아웃</a>
+
+	<div class="top-header">
+		<div style="width: 140px;"></div>
+		<div class="title">
+			<h1>
+				<a href="/WeSee/">WeSee</a>
+			</h1>
+		</div>
+
+
+		<div class="headerbutton">
+			<!-- mypage로 -->
+				<a href=<c:url value="/member/mypage.do"/>>
+				<div class="mypage">
+						내정보
+			</div>
+				</a>
+
+				<a href="${pageContext.request.contextPath}/logout.do">
+			<div class="logout">
+				로그아웃
+			</div>
+				</a>
+
+		</div>
+
 	</div>
-	<h1>
-		<a href="/WeSee/">WeSee</a>
-	</h1>
 
-	
-	
-	<div>
-		<button style="border: none; background-color: white;">
-			<img src="Resource/Bell.png">
-		</button>
-		<button style="border: none; background-color: white;">
-			<img src="Resource/Search.png">
-		</button>
 
-		<!-- write로 -->
-		<a href=<c:url value="/add.do"/>>
-			<button style="border: none; background-color: white;">
-				<img src="Resource/Pencil.png">
-			</button>
-		</a>
 
-		<!-- sendMessage로 -->
-		<a href=<c:url value="/message.do"/>>
+
+	<div class="downheader">
+		<div class="leftbutton">
 			<button style="border: none; background-color: white;">
-				<img src="Resource/Message.png">
+				<img src="Resource/Search.png">
 			</button>
-			
-		<!-- mypage로 -->
-		</a> <a href=<c:url value="/member/mypage.do"/>>
+		</div>
+
+
+		<div class="rightbutton">
 			<button style="border: none; background-color: white;">
-				<img src="Resource/Person.png">
+				<img src="Resource/Bell.png">
 			</button>
-		</a>
+
+			<!-- write로 -->
+			<a href=<c:url value="/add.do"/>>
+				<button style="border: none; background-color: white;">
+					<img src="Resource/Pencil.png">
+				</button>
+			</a>
+
+			<!-- sendMessage로 -->
+			<a href=<c:url value="/message.do"/>>
+				<button style="border: none; background-color: white;">
+					<img src="Resource/Message.png">
+				</button>
+			</a>
+		</div>
+
 	</div>
+
+
+
+
 
 	<p>Welcome, ${userId}!</p>
 	<c:if test="${empty boardList}">
@@ -96,8 +159,10 @@ table>tr>th {
 	<c:if test="${not empty boardList}">
 
 		<c:forEach var="board" items="${boardList}">
-			<div style="display: flex;  flex-wrap:wrap;  justify-content: center; margin-top: 30px;">
-				<table style="width: 400px; height: 650px; background-color: black;margin:20px;">
+			<div
+				style="display: flex; flex-wrap: wrap; justify-content: center; margin-top: 30px;">
+				<table
+					style="width: 400px; height: 650px; background-color: black; margin: 20px;">
 					<tr style="width: 400px; height: 20px;">
 						<th style="display: flex; color: white;">
 							<div>
@@ -130,38 +195,6 @@ table>tr>th {
 					</tr>
 					<tr class='scroll'
 						style="background-color: white; height: 90px; overflow: auto;">
-						<td style="display: flex;">
-							<div style="position: relative;">mango456</div>
-							<div class='scroll'
-								style="position: relative; margin-left: 5px; max-width: 190px; max-height: 21px; overflow: auto;">나는
-								망고입니다ffaddgdfsgsffas..</div> <!--DB 게시물의 댓글중 빨리적은 순서대로  -->
-							<div style="position: relative; margin-left: 10px;">02.02.01
-								15:30</div> <!-- nowdate(date)  -->
-						</td>
-						<td style="display: flex;">
-							<div style="position: relative;">Durumi</div>
-							<div class='scroll'
-								style="position: relative; margin-left: 5px; max-width: 190px; max-height: 21px; overflow: auto;">나는두루미입니다.fas..</div>
-							<!--DB 게시물의 댓글중 빨리적은 순서대로  -->
-							<div style="position: relative; margin-left: 10px;">02.02.01
-								15:30</div> <!-- nowdate(date)  -->
-						</td>
-						<td style="display: flex;">
-							<div style="position: relative;">mango456</div>
-							<div class='scroll'
-								style="position: relative; margin-left: 5px; max-width: 190px; max-height: 21px; overflow: auto;">나는
-								망고입니다ffaddgdfsgsffas..</div> <!--DB 게시물의 댓글중 빨리적은 순서대로  -->
-							<div style="position: relative; margin-left: 10px;">02.02.01
-								15:30</div> <!-- nowdate(date)  -->
-						</td>
-						<td style="display: flex;">
-							<div style="position: relative;">mango456</div>
-							<div class='scroll'
-								style="position: relative; margin-left: 5px; max-width: 190px; max-height: 21px; overflow: auto;">나는
-								망고입니다ffaddgdfsgsffas..</div> <!--DB 게시물의 댓글중 빨리적은 순서대로  -->
-							<div style="position: relative; margin-left: 10px;">02.02.01
-								15:30</div> <!-- nowdate(date)  -->
-						</td>
 						<td style="display: flex;">
 							<div style="position: relative;">mango456</div>
 							<div class='scroll'
